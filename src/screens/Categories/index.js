@@ -1,22 +1,29 @@
-import { Button, Text, View } from "react-native"
+import { Button, FlatList, Text, View } from "react-native"
 
+import { CATEGORIES } from "../../constants/data/categories"
 import COLORS from "../../constants/themes/colors"
+import { CategoryItem } from "../../components"
 import React from "react"
+import { SafeAreaView } from "react-native-safe-area-context"
 import { styles } from "./styles"
 
-const CategoriesScreen = ({ navigation }) => {
+const Categories = ({ navigation, route }) => {
+  const onSelected = (item) => {
+    navigation.navigate("Products", { categoryId: item.id, title: item.name })
+  }
+  const renderItem = ({ item }) => (
+    <CategoryItem item={item} onSelected={onSelected} />
+  )
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Categories Screen</Text>
-      <Button
-        title="Go to Products"
-        color={COLORS.primary}
-        onPress={() => {
-          navigation.navigate("Category")
-        }}
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={CATEGORIES}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+        styles={styles.categoriesList}
       />
-    </View>
+    </SafeAreaView>
   )
 }
 
-export default CategoriesScreen
+export default Categories

@@ -1,6 +1,6 @@
 import { ActivityIndicator, StyleSheet, View } from "react-native"
 
-import ShopNavigator from "./navigation/ShopNavigator"
+import AppNavigator from "./navigation/index"
 import colors from "./constants/themes/colors"
 import { useFonts } from "expo-font"
 
@@ -17,7 +17,7 @@ export default function App() {
       </View>
     )
   } else {
-    return <ShopNavigator />
+    return <AppNavigator />
   }
 }
 
