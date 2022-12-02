@@ -1,5 +1,6 @@
 import { Categories, Product, Products } from "../screens"
 
+import Header from "../components/header/index"
 import React from "react"
 import colors from "../constants/themes/colors"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
@@ -22,7 +23,8 @@ const ShopNavigator = () => {
       <Stack.Screen
         name="Home"
         options={{
-          title: "Casa Tomada",
+          // title: "Casa Tomada",
+          headerTitle: () => <Header />,
         }}
         component={Categories}
       />
