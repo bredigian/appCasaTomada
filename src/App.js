@@ -6,9 +6,9 @@ import { useFonts } from "expo-font"
 
 export default function App() {
   const [loaded] = useFonts({
-    LatoRegular: require("../assets/fonts/Lato-Regular.ttf"),
-    LatoBold: require("../assets/fonts/Lato-Bold.ttf"),
-    LatoItalic: require("../assets/fonts/Lato-Italic.ttf"),
+    UrbanistRegular: require("../assets/fonts/Urbanist-Regular.ttf"),
+    UrbanistBold: require("../assets/fonts/Urbanist-Bold.ttf"),
+    UrbanistItalic: require("../assets/fonts/Urbanist-Italic.ttf"),
   })
   if (!loaded) {
     return (

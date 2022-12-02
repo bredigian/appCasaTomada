@@ -19,18 +19,18 @@ export const styles = StyleSheet.create({
     height: 300,
   },
   productName: {
-    fontFamily: "LatoRegular",
+    fontFamily: "UrbanistRegular",
     fontSize: 20,
     color: colors.secundary,
   },
   productPrice: {
-    fontFamily: "LatoBold",
+    fontFamily: "UrbanistBold",
     fontSize: 25,
     color: colors.secundary,
     marginVertical: 20,
   },
   productQuantity: {
-    fontFamily: "LatoItalic",
+    fontFamily: "UrbanistItalic",
     fontSize: 18,
     color: colors.secundary,
   },

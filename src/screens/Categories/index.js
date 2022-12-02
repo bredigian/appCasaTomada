@@ -15,14 +15,13 @@ const Categories = ({ navigation, route }) => {
     <CategoryItem item={item} onSelected={onSelected} />
   )
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={CATEGORIES}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        styles={styles.categoriesList}
-      />
-    </SafeAreaView>
+    // <SafeAreaView style={styles.container}>
+    <FlatList
+      data={CATEGORIES}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      styles={styles.container}
+    />
   )
 }
 

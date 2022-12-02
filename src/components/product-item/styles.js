@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     backgroundColor: colors.white,
-    borderRadius: 5,
+    borderRadius: 10,
   },
   productImg: {
     width: 120,
@@ -30,18 +30,18 @@ export const styles = StyleSheet.create({
   },
   productName: {
     fontSize: 16,
-    fontFamily: "LatoRegular",
+    fontFamily: "UrbanistRegular",
     color: colors.secundary,
   },
   productPrice: {
     fontSize: 20,
-    fontFamily: "LatoBold",
+    fontFamily: "UrbanistBold",
     color: colors.secundary,
     marginVertical: 10,
   },
   productQuantity: {
     fontSize: 14,
-    fontFamily: "LatoItalic",
+    fontFamily: "UrbanistItalic",
     color: colors.secundary,
   },
 })

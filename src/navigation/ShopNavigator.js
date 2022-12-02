@@ -12,14 +12,18 @@ const ShopNavigator = () => {
       initialRouteName="Home"
       screenOptions={{
         headerTitleStyle: {
-          fontFamily: "LatoBold",
+          fontFamily: "UrbanistBold",
           color: colors.secundary,
+          fontSize: 16,
         },
+        headerTitleAlign: "center",
       }}
     >
       <Stack.Screen
         name="Home"
-        options={{ headerShown: false }}
+        options={{
+          title: "Casa Tomada",
+        }}
         component={Categories}
       />
       <Stack.Screen

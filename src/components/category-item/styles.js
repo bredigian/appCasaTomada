@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     height: 160,
     alignItems: "center",
     margin: 20,
+    flexDirection: "row-reverse",
     justifyContent: "space-evenly",
     borderRadius: 10,
     backgroundColor: colors.white,
@@ -26,8 +27,8 @@ export const styles = StyleSheet.create({
     tintColor: colors.secundary,
   },
   categoryName: {
-    fontFamily: "LatoBold",
+    fontFamily: "UrbanistBold",
     color: colors.secundary,
-    fontSize: 18,
+    fontSize: 30,
   },
 })

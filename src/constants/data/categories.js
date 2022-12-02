@@ -16,7 +16,7 @@ export const CATEGORIES = [
   },
   {
     id: 4,
-    name: "Regaleria",
+    name: "Vinos",
     img: require("../../../assets/icons/categories/vinos.png"),
   },
 ]
