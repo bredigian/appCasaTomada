@@ -2,7 +2,7 @@ import { Button, FlatList, Text, View } from "react-native"
 
 import COLORS from "../../constants/themes/colors"
 import { PRODUCTS } from "../../constants/data/products"
-import ProductItem from "../../components/product-item"
+import { ProductItem } from "../../components"
 import React from "react"
 import { styles } from "./styles"
 

@@ -1,10 +1,8 @@
-import { Button, FlatList, Text, View } from "react-native"
-
 import { CATEGORIES } from "../../constants/data/categories"
 import COLORS from "../../constants/themes/colors"
 import { CategoryItem } from "../../components"
+import { FlatList } from "react-native"
 import React from "react"
-import { SafeAreaView } from "react-native-safe-area-context"
 import { styles } from "./styles"
 
 const Categories = ({ navigation, route }) => {

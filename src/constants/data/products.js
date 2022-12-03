@@ -42,7 +42,7 @@ export const PRODUCTS = [
   {
     id: "6",
     name: "Fernet Branca 1l + Coca Cola 2.25ml",
-    price: 190,
+    price: 2800,
     cateogoryId: 1,
     quantity: 250,
     img: require("../../../assets/img/products/fernetCoca.png"),

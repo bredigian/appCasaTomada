@@ -1,7 +1,6 @@
-import { Image, ScrollView, Text, View } from "react-native"
+import { Image, Text, View } from "react-native"
 
 import { PRODUCTS } from "../../constants/data/products"
-import ProductItem from "../../components/product-item"
 import React from "react"
 import { styles } from "./styles"
 
