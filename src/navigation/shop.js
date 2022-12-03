@@ -14,10 +14,14 @@ const ShopNavigator = () => {
       screenOptions={{
         headerTitleStyle: {
           fontFamily: "UrbanistBold",
-          color: colors.secundary,
+          color: colors.white,
           fontSize: 16,
         },
         headerTitleAlign: "center",
+        headerStyle: {
+          backgroundColor: colors.primary,
+        },
+        statusBarColor: colors.primary,
       }}
     >
       <Stack.Screen
