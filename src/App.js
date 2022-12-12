@@ -1,7 +1,9 @@
 import { ActivityIndicator, StyleSheet, View } from "react-native"
 
 import AppNavigator from "./navigation/index"
+import { Provider } from "react-redux"
 import colors from "./constants/themes/colors"
+import store from "./store"
 import { useFonts } from "expo-font"
 
 export default function App() {
@@ -17,7 +19,11 @@ export default function App() {
       </View>
     )
   } else {
-    return <AppNavigator />
+    return (
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    )
   }
 }
 

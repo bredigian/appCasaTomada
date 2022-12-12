@@ -1,13 +1,12 @@
 import { Image, Text, View } from "react-native"
 
-import { PRODUCTS } from "../../constants/data/products"
 import React from "react"
 import { styles } from "./styles"
+import { useSelector } from "react-redux"
 
-const Product = ({ navigation, route }) => {
-  const { productId } = route.params
-  const productFiltered = PRODUCTS.find((product) => product.id === productId)
-  const { img, name, quantity, price } = productFiltered || {}
+const Product = () => {
+  const product = useSelector((state) => state.products.selected)
+  const { img, name, quantity, price } = product || {}
   return (
     <View style={styles.container}>
       <View>

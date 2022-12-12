@@ -1,20 +1,23 @@
-import { Button, FlatList, Text, View } from "react-native"
+import React, { useEffect } from "react"
+import { filterProducts, selectProduct } from "../../store/actions"
+import { useDispatch, useSelector } from "react-redux"
 
-import COLORS from "../../constants/themes/colors"
-import { PRODUCTS } from "../../constants/data/products"
+import { FlatList } from "react-native"
 import { ProductItem } from "../../components"
-import React from "react"
-import { styles } from "./styles"
 
-const Products = ({ navigation, route }) => {
-  const { categoryId, title } = route.params
-
-  const productsFiltered = PRODUCTS.filter(
-    (product) => product.cateogoryId === categoryId
+const Products = ({ navigation }) => {
+  const category = useSelector((state) => state.categories.selected)
+  const filteredProducts = useSelector(
+    (state) => state.products.filteredProducts
   )
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(filterProducts(category.id))
+  }, [])
 
   const onSelected = (item) => {
-    navigation.navigate("Product", { title: item.name, productId: item.id })
+    dispatch(selectProduct(item.id))
+    navigation.navigate("Product", { title: item.name })
   }
 
   const renderItem = ({ item }) => (
@@ -22,7 +25,7 @@ const Products = ({ navigation, route }) => {
   )
   return (
     <FlatList
-      data={productsFiltered}
+      data={filteredProducts}
       renderItem={renderItem}
       keyExtractor={(item) => item.id.toString()}
     />
