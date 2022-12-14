@@ -1,5 +1,4 @@
 import CartNavigator from "./cart"
-import { Header } from "../components"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 import OrdersNavigator from "./orders"
 import React from "react"
@@ -10,7 +9,7 @@ import { useSelector } from "react-redux"
 
 const BottomTabs = createBottomTabNavigator()
 
-const Tabs = () => {
+const TabNavigator = () => {
   const cartItems = useSelector((state) => state.cart.items)
   return (
     <BottomTabs.Navigator
@@ -80,4 +79,4 @@ const Tabs = () => {
   )
 }
 
-export default Tabs
+export default TabNavigator

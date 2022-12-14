@@ -4,4 +4,5 @@ export default {
   secundary: "#000000",
   white: "#ffffff",
   gray: "#f0f0f0",
+  grayDark: "#6a6a6a",
 }

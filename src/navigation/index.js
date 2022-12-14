@@ -1,11 +1,14 @@
+import React, { useState } from "react"
+
+import AuthNavigator from "./auth"
 import { NavigationContainer } from "@react-navigation/native"
-import React from "react"
-import Tabs from "./tabs"
+import TabNavigator from "./tabs"
 
 const AppNavigator = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(null)
   return (
     <NavigationContainer>
-      <Tabs />
+      {isAuthenticated ? <TabNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   )
 }
