@@ -6,10 +6,12 @@ import React from "react"
 import ShopNavigator from "./shop"
 import colors from "../constants/themes/colors"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { useSelector } from "react-redux"
 
 const BottomTabs = createBottomTabNavigator()
 
 const Tabs = () => {
+  const cartItems = useSelector((state) => state.cart.items)
   return (
     <BottomTabs.Navigator
       initialRouteName="Shop"
@@ -52,6 +54,12 @@ const Tabs = () => {
               color={colors.primary}
             />
           ),
+          tabBarBadge: cartItems.length > 0 ? cartItems.length : null,
+          tabBarBadgeStyle: {
+            fontFamily: "UrbanistItalic",
+            fontSize: 12,
+            color: colors.white,
+          },
         }}
       />
       <BottomTabs.Screen
