@@ -1,19 +1,21 @@
 import { FlatList, Text, TouchableOpacity, View } from "react-native"
+import { confirmCart, removeFromCart } from "../../store/actions"
+import { useDispatch, useSelector } from "react-redux"
 
 import { CartItem } from "../../components"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 import React from "react"
 import { styles } from "./styles"
-import { useSelector } from "react-redux"
 
-const Cart = ({ navigation }) => {
+const Cart = () => {
   const cart = useSelector((state) => state.cart.items)
   const total = useSelector((state) => state.cart.total)
+  const dispatch = useDispatch()
   const onDelete = (id) => {
-    console.warn("Delete", id)
+    dispatch(removeFromCart(id))
   }
-  const onCheckout = () => {
-    console.warn("Checkout OK")
+  const onConfirmCart = () => {
+    dispatch(confirmCart(cart, total))
   }
   const renderItem = ({ item }) => <CartItem item={item} onDelete={onDelete} />
   return (
@@ -23,12 +25,18 @@ const Cart = ({ navigation }) => {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
-      <View style={styles.confirmTotal}>
-        <TouchableOpacity style={styles.checkout} onPress={onCheckout}>
-          <Text style={styles.totalText}>Total ${total}</Text>
-          <MaterialCommunityIcons name="check-circle" size={50} color="green" />
-        </TouchableOpacity>
-      </View>
+      {cart.length > 0 && (
+        <View style={styles.confirmTotal}>
+          <TouchableOpacity style={styles.checkout} onPress={onConfirmCart}>
+            <Text style={styles.totalText}>Total ${total}</Text>
+            <MaterialCommunityIcons
+              name="check-circle"
+              size={50}
+              color="green"
+            />
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   )
 }

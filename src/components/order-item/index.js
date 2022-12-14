@@ -13,7 +13,7 @@ const OrderItem = ({ item, onDelete }) => {
         <Text style={styles.orderDate}>{formatDate(item.date)}</Text>
         <Text style={styles.orderValue}>${item.total}</Text>
       </View>
-      <TouchableOpacity onPress={() => onDelete(item)}>
+      <TouchableOpacity onPress={() => onDelete(item.id)}>
         <MaterialCommunityIcons
           name="delete"
           size={40}
