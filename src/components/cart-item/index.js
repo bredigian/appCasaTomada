@@ -21,13 +21,15 @@ const CartItem = ({ item, onDelete }) => {
           <Text style={styles.productPrice}>
             {item.quantity}x ${item.price}
           </Text>
-          <Text style={styles.productTotalPrice}>${item.totalPrice}</Text>
+          <Text style={styles.productTotalPrice}>
+            ${item.quantity * item.price}
+          </Text>
         </View>
         <TouchableOpacity onPress={() => onDelete(item.id)}>
           <MaterialCommunityIcons
             name="delete"
             size={30}
-            color={colors.primary}
+            color={colors.secundary}
           />
         </TouchableOpacity>
       </View>

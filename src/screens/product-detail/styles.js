@@ -15,8 +15,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   productImg: {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
   },
   productName: {
     fontFamily: "UrbanistRegular",

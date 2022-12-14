@@ -7,7 +7,7 @@ const initialState = {
   selected: null,
 }
 
-const CategoryReducer = (state = initialState, action) => {
+const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
     case SELECT_CATEGORY:
       const indexCategory = state.categories.findIndex(
@@ -25,4 +25,4 @@ const CategoryReducer = (state = initialState, action) => {
   }
 }
 
-export default CategoryReducer
+export default categoryReducer

@@ -7,3 +7,8 @@ export const formatDate = (time) => {
   let date = new Date(time)
   return date.toLocaleDateString()
 }
+
+export const sumTotal = (items) =>
+  items
+    ?.map((item) => item.price * item.quantity)
+    ?.reduce((total, itemPrice) => total + itemPrice, 0)

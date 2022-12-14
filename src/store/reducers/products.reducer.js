@@ -9,7 +9,7 @@ const initialState = {
   selected: null,
 }
 
-const ProductsReducer = (state = initialState, action) => {
+const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FILTER_PRODUCTS:
       return {
@@ -30,4 +30,4 @@ const ProductsReducer = (state = initialState, action) => {
   }
 }
 
-export default ProductsReducer
+export default productsReducer
