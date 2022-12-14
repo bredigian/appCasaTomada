@@ -21,6 +21,7 @@ const ShopNavigator = () => {
         headerStyle: {
           backgroundColor: colors.primary,
         },
+        headerTintColor: colors.white,
         statusBarColor: colors.primary,
       }}
     >
