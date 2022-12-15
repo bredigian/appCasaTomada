@@ -18,7 +18,6 @@ const Categories = ({ navigation }) => {
     <CategoryItem item={item} onSelected={onSelected} />
   )
   return (
-    // <SafeAreaView style={styles.container}>
     <FlatList
       data={categories}
       renderItem={renderItem}

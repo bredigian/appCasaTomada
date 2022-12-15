@@ -3,10 +3,11 @@ import colors from "../../constants/themes/colors"
 
 export const styles = StyleSheet.create({
   container: {
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
-    height: "100%",
     width: "100%",
+    height: "100%",
+    backgroundColor: colors.gray,
   },
   logo: {
     width: 100,

@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from "redux"
 import {
+  authReducer,
   cartReducer,
   categoryReducer,
   ordersReducer,
@@ -13,6 +14,7 @@ const RootReducer = combineReducers({
   categories: categoryReducer,
   cart: cartReducer,
   orders: ordersReducer,
+  auth: authReducer,
 })
 
 export default createStore(RootReducer, applyMiddleware(thunk))
