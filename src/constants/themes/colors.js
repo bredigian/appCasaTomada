@@ -5,4 +5,5 @@ export default {
   white: "#ffffff",
   gray: "#f0f0f0",
   grayDark: "#6a6a6a",
+  blackTransparent: "rgba(0,0,0,0.875)",
 }

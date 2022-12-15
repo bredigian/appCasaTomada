@@ -4,14 +4,13 @@ import colors from "../../constants/themes/colors"
 export const styles = StyleSheet.create({
   categoryContainer: {
     flex: 1,
-    height: 160,
+    height: 180,
     alignItems: "center",
     margin: 20,
     flexDirection: "row-reverse",
     justifyContent: "space-evenly",
     borderRadius: 10,
     backgroundColor: colors.white,
-    padding: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -22,6 +21,10 @@ export const styles = StyleSheet.create({
 
     elevation: 4,
   },
+  backgroundImg: {
+    width: "100%",
+    height: "100%",
+  },
   categoryImage: {
     width: 70,
     height: 70,
@@ -29,7 +32,15 @@ export const styles = StyleSheet.create({
   },
   categoryName: {
     fontFamily: "UrbanistBold",
-    color: colors.secundary,
+    color: colors.white,
     fontSize: 30,
+    backgroundColor: colors.blackTransparent,
+    width: "100%",
+    height: "100%",
+    textAlign: "right",
+    textAlignVertical: "bottom",
+    paddingRight: 20,
+    paddingBottom: 20,
+    borderRadius: 10,
   },
 })

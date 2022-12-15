@@ -2,7 +2,7 @@ export const CATEGORIES = [
   {
     id: 1,
     name: "Combos",
-    img: require("../../../assets/icons/categories/combos.png"),
+    img: require("../../../assets/img/categories/combos.png"),
   },
   {
     id: 2,
@@ -12,7 +12,7 @@ export const CATEGORIES = [
   {
     id: 3,
     name: "Cervezas",
-    img: require("../../../assets/icons/categories/cervezas.png"),
+    img: require("../../../assets/img/categories/cervezas.png"),
   },
   {
     id: 4,
