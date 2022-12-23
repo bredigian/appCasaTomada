@@ -12,7 +12,7 @@ const CategoryItem = ({ item, onSelected }) => {
       <ImageBackground
         source={item.img}
         style={styles.backgroundImg}
-        resizeMethod="resize"
+        resizeMode="center"
       >
         <Text style={styles.categoryName}>{item.name}</Text>
       </ImageBackground>

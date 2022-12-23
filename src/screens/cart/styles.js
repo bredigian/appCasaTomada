@@ -23,4 +23,15 @@ export const styles = StyleSheet.create({
     color: colors.secundary,
     fontSize: 25,
   },
+  cartEmpty: {
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textEmpty: {
+    fontFamily: "UrbanistRegular",
+    color: colors.secundary,
+    fontSize: 25,
+    marginVertical: 40,
+  },
 })

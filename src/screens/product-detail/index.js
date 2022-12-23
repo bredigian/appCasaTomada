@@ -1,6 +1,7 @@
 import { Button, Image, Text, View } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 
+import { QuantityIncrementator } from "../../components"
 import React from "react"
 import { addToCart } from "../../store/actions/cart.action"
 import colors from "../../constants/themes/colors"
@@ -23,6 +24,7 @@ const Product = () => {
         <Text style={styles.productPrice}>${price}</Text>
         <Text style={styles.productQuantity}>Stock: {quantity}</Text>
       </View>
+      <QuantityIncrementator initial={1} stock={quantity} />
       <Button
         title="Add to cart"
         color={colors.primary}

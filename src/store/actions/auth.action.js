@@ -1,5 +1,6 @@
 import { URL_AUTH_SIGN_IN, URL_AUTH_SIGN_UP } from "../../constants/firebase"
 
+import { Alert } from "react-native"
 import { authTypes } from "../types"
 
 const { SIGN_IN, SIGN_UP } = authTypes
@@ -19,6 +20,7 @@ export const signUp = (email, password) => {
         }),
       })
       if (!response.ok) {
+        Alert.alert("User already exists")
         throw new Error("Something went wrong!")
       }
       const data = await response.json()
@@ -48,6 +50,7 @@ export const signIn = (email, password) => {
         }),
       })
       if (!response.ok) {
+        Alert.alert("Email or password is incorrect")
         throw new Error("Something went wrong!")
       }
       const data = await response.json()

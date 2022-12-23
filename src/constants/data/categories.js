@@ -7,16 +7,11 @@ export const CATEGORIES = [
   {
     id: 2,
     name: "Aperitivos",
-    img: require("../../../assets/icons/categories/aperitivos.png"),
+    img: require("../../../assets/img/categories/aperitivos.png"),
   },
   {
     id: 3,
     name: "Cervezas",
     img: require("../../../assets/img/categories/cervezas.png"),
-  },
-  {
-    id: 4,
-    name: "Vinos",
-    img: require("../../../assets/icons/categories/vinos.png"),
   },
 ]
