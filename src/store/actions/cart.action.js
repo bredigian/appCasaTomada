@@ -3,9 +3,10 @@ import { cartTypes } from "../types"
 
 const { ADD_TO_CART, CONFIRM_CART, REMOVE_FROM_CART } = cartTypes
 
-export const addToCart = (product) => ({
+export const addToCart = (product, quantity) => ({
   type: ADD_TO_CART,
   item: product,
+  quantity: quantity,
 })
 
 export const removeFromCart = (id) => ({

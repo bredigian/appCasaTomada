@@ -16,11 +16,11 @@ const cartReducer = (state = initialState, action) => {
       let updatedCart = []
       if (state.items.find((item) => item.id === action.item.id)) {
         updatedCart = state.items.map((item) => {
-          if (item.id === action.item.id) item.quantity += 1
+          if (item.id === action.item.id) item.quantity += action.quantity
           return item
         })
       } else {
-        const item = { ...action.item, quantity: 1 }
+        const item = { ...action.item, quantity: action.quantity }
         updatedCart = [...state.items, item]
       }
       return {
