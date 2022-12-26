@@ -8,15 +8,15 @@ import React from "react"
 import colors from "../../constants/themes/colors"
 import { styles } from "./styles"
 
-const Cart = () => {
+const Cart = ({ navigation }) => {
   const cart = useSelector((state) => state.cart.items)
-  const total = useSelector((state) => state.cart.total)
   const dispatch = useDispatch()
   const onDelete = (id) => {
     dispatch(removeFromCart(id))
   }
   const onConfirmCart = () => {
-    dispatch(confirmCart(cart, total))
+    navigation.navigate("LocationSelector")
+    //dispatch(confirmCart(cart, total))
   }
   const renderItem = ({ item }) => <CartItem item={item} onDelete={onDelete} />
   return (
@@ -40,12 +40,9 @@ const Cart = () => {
       {cart.length > 0 && (
         <View style={styles.confirmTotal}>
           <TouchableOpacity style={styles.checkout} onPress={onConfirmCart}>
-            <Text style={styles.totalText}>Total ${total}</Text>
-            <MaterialCommunityIcons
-              name="check-circle"
-              size={50}
-              color="green"
-            />
+            <Text style={styles.totalText}>
+              Select your location and checkout
+            </Text>
           </TouchableOpacity>
         </View>
       )}

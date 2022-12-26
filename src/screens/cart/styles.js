@@ -16,12 +16,14 @@ export const styles = StyleSheet.create({
   checkout: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
   },
   totalText: {
     fontFamily: "UrbanistBold",
     color: colors.secundary,
-    fontSize: 25,
+    fontSize: 18,
+    width: 160,
+    textAlign: "center",
   },
   cartEmpty: {
     height: "100%",
