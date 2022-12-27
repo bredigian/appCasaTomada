@@ -1,11 +1,11 @@
 import { FlatList, Text, TouchableOpacity, View } from "react-native"
-import { confirmCart, removeFromCart } from "../../store/actions"
 import { useDispatch, useSelector } from "react-redux"
 
 import { CartItem } from "../../components"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 import React from "react"
 import colors from "../../constants/themes/colors"
+import { removeFromCart } from "../../store/actions"
 import { styles } from "./styles"
 
 const Cart = ({ navigation }) => {
@@ -14,9 +14,8 @@ const Cart = ({ navigation }) => {
   const onDelete = (id) => {
     dispatch(removeFromCart(id))
   }
-  const onConfirmCart = () => {
+  const onSelectLocation = () => {
     navigation.navigate("LocationSelector")
-    //dispatch(confirmCart(cart, total))
   }
   const renderItem = ({ item }) => <CartItem item={item} onDelete={onDelete} />
   return (
@@ -39,7 +38,7 @@ const Cart = ({ navigation }) => {
       )}
       {cart.length > 0 && (
         <View style={styles.confirmTotal}>
-          <TouchableOpacity style={styles.checkout} onPress={onConfirmCart}>
+          <TouchableOpacity style={styles.checkout} onPress={onSelectLocation}>
             <Text style={styles.totalText}>
               Select your location and checkout
             </Text>
