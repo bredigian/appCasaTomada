@@ -1,13 +1,13 @@
 import * as Location from "expo-location"
 
 import { Button, Text, View } from "react-native"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import MapPreview from "../map-preview"
 import colors from "../../constants/themes/colors"
 import { styles } from "./styles"
 
-const LocationSelector = () => {
+const LocationSelector = ({ onSelectLocation }) => {
   const [pickedLocation, setPickedLocation] = useState()
   const handleGetLocation = async () => {
     const isLocationOk = await verifyPermissions()
@@ -26,6 +26,9 @@ const LocationSelector = () => {
       lng: location.coords.longitude,
     })
   }
+  useEffect(() => {
+    onSelectLocation(pickedLocation)
+  }, [pickedLocation])
   const verifyPermissions = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync()
     if (status !== "granted") {
