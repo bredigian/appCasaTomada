@@ -1,21 +1,26 @@
 import { PRODUCTS } from "../../constants/data"
 import { productsTypes } from "../types"
 
-const { FILTER_PRODUCTS, SELECT_PRODUCTS } = productsTypes
+const { FILTER_PRODUCTS, SELECT_PRODUCTS, GET_PRODUCTS } = productsTypes
 
 const initialState = {
-  products: PRODUCTS,
+  products: [],
   filteredProduct: [],
   selected: null,
 }
 
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_PRODUCTS:
+      return {
+        ...state,
+        products: action.products,
+      }
     case FILTER_PRODUCTS:
       return {
         ...state,
         filteredProducts: state.products.filter(
-          (product) => product.cateogoryId === action.categoryId
+          (product) => product.categoryId === action.categoryId
         ),
       }
     case SELECT_PRODUCTS:
