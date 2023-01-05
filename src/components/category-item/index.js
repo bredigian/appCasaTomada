@@ -10,7 +10,7 @@ const CategoryItem = ({ item, onSelected }) => {
       onPress={() => onSelected(item)}
     >
       <ImageBackground
-        source={item.img}
+        source={{ uri: item.img }}
         style={styles.backgroundImg}
         resizeMode="center"
       >

@@ -28,7 +28,11 @@ const Product = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Image source={img} style={styles.productImg} resizeMode="center" />
+        <Image
+          source={{ uri: img }}
+          style={styles.productImg}
+          resizeMode="center"
+        />
       </View>
       <View style={styles.productDetails}>
         <Text style={styles.productName}>{name}</Text>

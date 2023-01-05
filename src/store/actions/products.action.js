@@ -10,6 +10,9 @@ export const getProducts = () => {
     try {
       const productsCollection = collection(database, "products")
       const productsSnapshot = await getDocs(productsCollection)
+      if (productsSnapshot.empty) {
+        throw new Error("No products found")
+      }
       const products = productsSnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),

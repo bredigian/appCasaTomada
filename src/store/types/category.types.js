@@ -1,3 +1,4 @@
 export const categoryTypes = {
   SELECT_CATEGORY: "SELECT_CATEGORY",
+  FETCH_CATEGORIES: "FETCH_CATEGORIES",
 }

@@ -8,7 +8,7 @@ const ProductItem = ({ item, onSelected }) => {
     <TouchableOpacity style={styles.container} onPress={() => onSelected(item)}>
       <View>
         <Image
-          source={item.img}
+          source={{ uri: item.img }}
           style={styles.productImg}
           resizeMode="center"
         />
