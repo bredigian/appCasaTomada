@@ -42,14 +42,15 @@ const formReducer = (state, action) => {
   }
 }
 
-const Auth = () => {
+const Auth = ({ route, navigation }) => {
   const dispatch = useDispatch()
+  const { loginOK } = route.params
   const [formState, dispatchFormState] = useReducer(formReducer, initialState)
-  const [isLogin, setIsLogin] = useState(true)
+  const [isLogin, setIsLogin] = useState(loginOK)
   const title = isLogin ? "Log In" : "Sign Up"
   const message = isLogin
-    ? "Don't have an account? Sign Up!"
-    : "Already have an account? Log In!"
+    ? "Don't have an account? Sign Up"
+    : "Already have an account? Log In"
   const onHandleSubmit = () => {
     dispatch(
       isLogin
