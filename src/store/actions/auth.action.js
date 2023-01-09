@@ -42,12 +42,20 @@ export const signUp = (email, password, firstName, lastName) => {
           },
         }),
       })
-      const dataUser = await createUser.json()
+      const responseUserData = await createUser.json()
+      const userData = {
+        id: responseUserData.name,
+        data: {
+          email: data.email,
+          firstName: firstName,
+          lastName: lastName,
+        },
+      }
       dispatch({
         type: SIGN_UP,
         token: data.idToken,
         userId: data.localId,
-        dataUser: dataUser,
+        userData: userData,
       })
     } catch (error) {
       console.log(error)
@@ -74,10 +82,27 @@ export const signIn = (email, password) => {
         throw new Error("Something went wrong!")
       }
       const data = await response.json()
+      const getUser = await fetch(`${URL_BASE}/users.json`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      if (!getUser.ok) {
+        throw new Error("User not found")
+      }
+      const responseUserData = await getUser.json()
+      const userData = Object.keys(responseUserData).map((key) => {
+        return {
+          id: key,
+          data: responseUserData[key].data,
+        }
+      })
       dispatch({
         type: SIGN_IN,
         token: data.idToken,
         userId: data.localId,
+        userData: userData,
       })
     } catch (error) {
       console.log(error)
