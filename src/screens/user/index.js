@@ -1,4 +1,11 @@
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
+import {
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 
 import React from "react"
@@ -11,8 +18,17 @@ const User = () => {
     (state) => state.auth.userData[0]?.data || state.auth.userData.data
   )
   const logOut = () => {
-    console.log("log out")
-    dispatch(signOut())
+    Alert.alert("Log Out", "Are you sure you want to log out?", [
+      {
+        text: "Cancel",
+        style: "cancel",
+      },
+      {
+        text: "Log Out",
+        style: "default",
+        onPress: () => dispatch(signOut()),
+      },
+    ])
   }
   return (
     <ScrollView>
