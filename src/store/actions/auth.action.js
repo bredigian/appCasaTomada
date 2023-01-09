@@ -109,3 +109,13 @@ export const signIn = (email, password) => {
     }
   }
 }
+export const signOut = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: "SIGN_OUT",
+      token: null,
+      userId: null,
+      userData: null,
+    })
+  }
+}

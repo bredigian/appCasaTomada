@@ -1,13 +1,19 @@
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
 
 import React from "react"
+import { signOut } from "../../store/actions"
 import { styles } from "./styles"
-import { useSelector } from "react-redux"
 
 const User = () => {
+  const dispatch = useDispatch()
   const userData = useSelector(
     (state) => state.auth.userData[0]?.data || state.auth.userData.data
   )
+  const logOut = () => {
+    console.log("log out")
+    dispatch(signOut())
+  }
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -30,7 +36,7 @@ const User = () => {
           <TouchableOpacity style={styles.option} onPress={() => {}}>
             <Text style={styles.optionText}>Orders</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.option} onPress={() => {}}>
+          <TouchableOpacity style={styles.option} onPress={logOut}>
             <Text style={{ ...styles.optionText, ...styles.optionTextLogOut }}>
               Log Out
             </Text>
