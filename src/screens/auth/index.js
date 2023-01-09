@@ -5,11 +5,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
+import { Input, Loading } from "../../components"
 import React, { useReducer, useState } from "react"
 import { UPDATED_FORM, onInputChange } from "../../utils/form"
 import { signIn, signUp } from "../../store/actions"
 
-import { Input } from "../../components"
 import colors from "../../constants/themes/colors"
 import { styles } from "./styles"
 import { useDispatch } from "react-redux"
@@ -47,11 +47,13 @@ const Auth = ({ route, navigation }) => {
   const { loginOK } = route.params
   const [formState, dispatchFormState] = useReducer(formReducer, initialState)
   const [isLogin, setIsLogin] = useState(loginOK)
+  const [isLogging, setIsLogging] = useState(false)
   const title = isLogin ? "Log In" : "Sign Up"
   const message = isLogin
     ? "Don't have an account? Sign Up"
     : "Already have an account? Log In"
   const onHandleSubmit = () => {
+    setIsLogging(true)
     dispatch(
       isLogin
         ? signIn(formState.email.value, formState.password.value)
@@ -62,6 +64,9 @@ const Auth = ({ route, navigation }) => {
             formState.lastName.value
           )
     )
+    setTimeout(() => {
+      setIsLogging(false)
+    }, 3000)
   }
   const onHandleChangeInput = (value, type) => {
     onInputChange(type, value, dispatchFormState, formState)
@@ -131,12 +136,19 @@ const Auth = ({ route, navigation }) => {
             </>
           )}
         </View>
-        <Button
-          title={title}
-          color={colors.secundary}
-          onPress={onHandleSubmit}
-          disabled={!formState.isValid}
-        />
+        <View style={styles.submit}>
+          {isLogging ? (
+            <Loading color={colors.secundary} />
+          ) : (
+            <Button
+              title={title}
+              color={colors.secundary}
+              onPress={onHandleSubmit}
+              disabled={!formState.isValid}
+            />
+          )}
+        </View>
+
         <TouchableOpacity onPress={() => setIsLogin(!isLogin)}>
           <Text style={styles.alreadyAccount}>{message}</Text>
         </TouchableOpacity>

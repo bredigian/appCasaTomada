@@ -39,6 +39,9 @@ export const styles = StyleSheet.create({
     fontFamily: "UrbanistRegular",
     fontSize: 15,
   },
+  submit: {
+    height: 40,
+  },
   alreadyAccount: {
     marginVertical: 20,
     color: colors.secundary,
