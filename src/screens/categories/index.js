@@ -1,26 +1,22 @@
-import { ActivityIndicator, FlatList } from "react-native"
 import { CategoryItem, Loading } from "../../components"
-import React, { useCallback, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { fetchCategories, selectCategory } from "../../store/actions"
 import { useDispatch, useSelector } from "react-redux"
 
-import colors from "../../constants/themes/colors"
+import { FlatList } from "react-native"
 import { styles } from "./styles"
-import { useFocusEffect } from "@react-navigation/core"
 
 const Categories = ({ navigation }) => {
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const categories = useSelector((state) => state.categories.categories)
 
-  useFocusEffect(
-    useCallback(() => {
-      dispatch(fetchCategories())
-      setTimeout(() => {
-        setLoading(true)
-      }, 1500)
-    })
-  )
+  useEffect(() => {
+    dispatch(fetchCategories())
+    setTimeout(() => {
+      setLoading(true)
+    }, 2000)
+  }, [dispatch])
 
   const onSelected = (item) => {
     dispatch(selectCategory(item.id))

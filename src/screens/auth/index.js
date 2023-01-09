@@ -17,6 +17,8 @@ import { useDispatch } from "react-redux"
 const initialState = {
   email: { value: "", errorMessage: "", touched: false, hasError: true },
   password: { value: "", errorMessage: "", touched: false, hasError: true },
+  firstName: { value: "", errorMessage: "", touched: false, hasError: true },
+  lastName: { value: "", errorMessage: "", touched: false, hasError: true },
   isFormatValid: false,
 }
 
@@ -52,7 +54,12 @@ const Auth = () => {
     dispatch(
       isLogin
         ? signIn(formState.email.value, formState.password.value)
-        : signUp(formState.email.value, formState.password.value)
+        : signUp(
+            formState.email.value,
+            formState.password.value,
+            formState.firstName.value,
+            formState.lastName.value
+          )
     )
   }
   const onHandleChangeInput = (value, type) => {
@@ -92,6 +99,36 @@ const Auth = () => {
             touched={formState.password.touched}
             onChangeText={(text) => onHandleChangeInput(text, "password")}
           />
+          {!isLogin && (
+            <>
+              <Input
+                label="First Name"
+                style={styles.input}
+                placeholder="Enter your first name"
+                placeholderTextColor={colors.grayDark}
+                autoCapitalize="words"
+                autoCorrect={false}
+                value={formState.firstName.value}
+                hasError={formState.firstName.hasError}
+                errorMessage={formState.firstName.errorMessage}
+                touched={formState.firstName.touched}
+                onChangeText={(text) => onHandleChangeInput(text, "firstName")}
+              />
+              <Input
+                label="Last Name"
+                style={styles.input}
+                placeholder="Enter your last name"
+                placeholderTextColor={colors.grayDark}
+                autoCapitalize="words"
+                autoCorrect={false}
+                value={formState.lastName.value}
+                hasError={formState.lastName.hasError}
+                errorMessage={formState.lastName.errorMessage}
+                touched={formState.lastName.touched}
+                onChangeText={(text) => onHandleChangeInput(text, "lastName")}
+              />
+            </>
+          )}
         </View>
         <Button
           title={title}

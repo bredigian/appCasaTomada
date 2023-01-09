@@ -1,4 +1,3 @@
-import { PRODUCTS } from "../../constants/data"
 import { productsTypes } from "../types"
 
 const { FILTER_PRODUCTS, SELECT_PRODUCTS, GET_PRODUCTS } = productsTypes

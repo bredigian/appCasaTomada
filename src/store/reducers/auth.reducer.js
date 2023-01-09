@@ -5,6 +5,7 @@ const { SIGN_IN, SIGN_UP } = authTypes
 const initialState = {
   token: null,
   userId: null,
+  userData: null,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         token: action.token,
         userId: action.userId,
+        userData: action.userData,
       }
     case SIGN_IN:
       return {

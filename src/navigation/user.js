@@ -1,18 +1,17 @@
-import { Orders } from "../screens"
-import React from "react"
+import { User } from "../screens"
 import colors from "../constants/themes/colors"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
 const Stack = createNativeStackNavigator()
 
-const OrdersNavigator = () => {
+const UserNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Orders">
+    <Stack.Navigator initialRouteName="Users">
       <Stack.Screen
-        name="Orders"
-        component={Orders}
+        name="User"
+        component={User}
         options={{
-          title: "Orders",
+          title: "Users",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontFamily: "UrbanistBold",
@@ -28,4 +27,4 @@ const OrdersNavigator = () => {
   )
 }
 
-export default OrdersNavigator
+export default UserNavigator

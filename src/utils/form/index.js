@@ -34,6 +34,20 @@ export const validateInput = (name /*input name*/, value) => {
         }
       }
       break
+    case "firstName": {
+      if (value.trim() === "") {
+        error = true
+        errorMessage = "First name is required"
+      }
+      break
+    }
+    case "lastName": {
+      if (value.trim() === "") {
+        error = true
+        errorMessage = "Last name is required"
+      }
+      break
+    }
     default:
       break
   }

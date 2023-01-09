@@ -1,8 +1,9 @@
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons"
+
 import CartNavigator from "./cart"
-import { MaterialCommunityIcons } from "@expo/vector-icons"
-import OrdersNavigator from "./orders"
 import React from "react"
 import ShopNavigator from "./shop"
+import UserNavigator from "./user"
 import colors from "../constants/themes/colors"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { useSelector } from "react-redux"
@@ -62,13 +63,13 @@ const TabNavigator = () => {
         }}
       />
       <BottomTabs.Screen
-        name="OrdersTab"
-        component={OrdersNavigator}
+        name="UserTab"
+        component={UserNavigator}
         options={{
-          title: "Orders",
+          title: "User",
           tabBarIcon: ({ focused }) => (
-            <MaterialCommunityIcons
-              name={focused ? "clipboard-list" : "clipboard-list-outline"}
+            <FontAwesome
+              name={focused ? "user" : "user-o"}
               size={24}
               color={colors.primary}
             />
