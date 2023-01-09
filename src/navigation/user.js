@@ -11,7 +11,7 @@ const UserNavigator = () => {
         name="User"
         component={User}
         options={{
-          title: "Users",
+          title: "Account",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontFamily: "UrbanistBold",
