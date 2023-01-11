@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
+import { clearCart, signOut } from "../../store/actions"
 import { useDispatch, useSelector } from "react-redux"
 
 import React from "react"
-import { signOut } from "../../store/actions"
 import { styles } from "./styles"
 
 const User = () => {
@@ -17,6 +17,10 @@ const User = () => {
   const userData = useSelector(
     (state) => state.auth.userData[0]?.data || state.auth.userData.data
   )
+  const onConfirm = () => {
+    dispatch(clearCart())
+    dispatch(signOut())
+  }
   const logOut = () => {
     Alert.alert("Log Out", "Are you sure you want to log out?", [
       {
@@ -26,7 +30,7 @@ const User = () => {
       {
         text: "Log Out",
         style: "default",
-        onPress: () => dispatch(signOut()),
+        onPress: () => onConfirm(),
       },
     ])
   }

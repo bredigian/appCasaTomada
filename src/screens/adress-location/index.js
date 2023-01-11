@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import { Text, TouchableOpacity, View } from "react-native"
+import { clearCart, confirmCart } from "../../store/actions"
 import { useDispatch, useSelector } from "react-redux"
 
 import LocationSelector from "../../components/location-selector"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
-import { confirmCart } from "../../store/actions"
 import { styles } from "./styles"
 
 const AdressLocation = ({ navigation }) => {
@@ -14,6 +14,7 @@ const AdressLocation = ({ navigation }) => {
   const [coords, setCoords] = useState(null)
   const onConfirmCart = () => {
     dispatch(confirmCart(cart, total, coords))
+    dispatch(clearCart())
     navigation.navigate("Cart")
   }
   const onSelectLocation = (location) => {

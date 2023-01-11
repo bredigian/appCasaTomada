@@ -4,4 +4,5 @@ export const cartTypes = {
   CLEAR_CART: "CLEAR_CART",
   UPDATE_CART: "UPDATE_CART",
   CONFIRM_CART: "CONFIRM_CART",
+  GET_CART: "GET_CART",
 }

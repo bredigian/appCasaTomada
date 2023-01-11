@@ -3,8 +3,18 @@ import { ActivityIndicator, StyleSheet, View } from "react-native"
 import AppNavigator from "./navigation/index"
 import { Provider } from "react-redux"
 import colors from "./constants/themes/colors"
+import { init } from "./db"
 import store from "./store"
 import { useFonts } from "expo-font"
+
+init()
+  .then(() => {
+    console.log("Initialized database")
+  })
+  .catch((err) => {
+    console.log("Initializing db failed.")
+    console.log(err)
+  })
 
 export default function App() {
   const [loaded] = useFonts({

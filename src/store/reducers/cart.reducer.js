@@ -1,7 +1,8 @@
 import { cartTypes } from "../types"
 import { sumTotal } from "../../utils/functions"
 
-const { ADD_TO_CART, REMOVE_FROM_CART, CONFIRM_CART } = cartTypes
+const { ADD_TO_CART, REMOVE_FROM_CART, CONFIRM_CART, GET_CART, CLEAR_CART } =
+  cartTypes
 
 const initialState = {
   items: [],
@@ -12,6 +13,12 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_CART:
+      return {
+        ...state,
+        items: action.items,
+        total: sumTotal(action.items),
+      }
     case ADD_TO_CART:
       let updatedCart = []
       if (state.items.find((item) => item.id === action.item.id)) {
@@ -36,6 +43,18 @@ const cartReducer = (state = initialState, action) => {
         total: sumTotal(filteredCart),
       }
     case CONFIRM_CART:
+      if (action.result) {
+        return {
+          ...state,
+          items: [],
+          total: 0,
+        }
+      }
+      return {
+        ...state,
+        error: action.error,
+      }
+    case CLEAR_CART:
       if (action.result) {
         return {
           ...state,

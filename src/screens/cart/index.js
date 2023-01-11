@@ -1,11 +1,11 @@
 import { FlatList, Text, TouchableOpacity, View } from "react-native"
+import React, { useEffect } from "react"
+import { loadCart, removeFromCart } from "../../store/actions"
 import { useDispatch, useSelector } from "react-redux"
 
 import { CartItem } from "../../components"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
-import React from "react"
 import colors from "../../constants/themes/colors"
-import { removeFromCart } from "../../store/actions"
 import { styles } from "./styles"
 
 const Cart = ({ navigation }) => {
@@ -17,6 +17,9 @@ const Cart = ({ navigation }) => {
   const onSelectLocation = () => {
     navigation.navigate("LocationSelector")
   }
+  useEffect(() => {
+    dispatch(loadCart())
+  }, [dispatch])
   const renderItem = ({ item }) => <CartItem item={item} onDelete={onDelete} />
   return (
     <View style={styles.container}>
