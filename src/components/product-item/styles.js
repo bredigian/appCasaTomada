@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "UrbanistRegular",
     color: colors.secundary,
+    textAlign: "right",
   },
   productPrice: {
     fontSize: 20,

@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
     fontFamily: "UrbanistRegular",
     fontSize: 20,
     color: colors.secundary,
+    textAlign: "center",
   },
   productPrice: {
     fontFamily: "UrbanistBold",

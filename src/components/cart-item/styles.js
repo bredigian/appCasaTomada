@@ -34,10 +34,11 @@ export const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   productName: {
-    maxWidth: 140,
+    maxWidth: 150,
     fontFamily: "UrbanistRegular",
     fontSize: 16,
     color: colors.secundary,
+    textAlign: "right",
   },
   productPrice: {
     fontSize: 18,
