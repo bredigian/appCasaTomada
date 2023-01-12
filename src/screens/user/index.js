@@ -1,4 +1,3 @@
-import * as FileSystem from "expo-file-system"
 import * as ImagePicker from "expo-image-picker"
 
 import {
@@ -9,7 +8,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { clearCart, signOut } from "../../store/actions/index"
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage"
 import { useDispatch, useSelector } from "react-redux"
 
 import { AntDesign } from "@expo/vector-icons"
@@ -17,12 +18,12 @@ import colors from "../../constants/themes/colors"
 import { styles } from "./styles"
 
 const User = ({ navigation }) => {
+  const storage = getStorage()
   const [pickedUri, setPickedUri] = useState(null)
   const dispatch = useDispatch()
   const userData = useSelector(
-    (state) => state.auth.userData[0]?.data || state.auth.userData.data
+    (state) => state.auth.userData[0]?.data || state.auth.userData?.data
   )
-  console.log(userData)
   const onConfirm = () => {
     dispatch(clearCart())
     dispatch(signOut())
@@ -55,6 +56,31 @@ const User = ({ navigation }) => {
     }
     return true
   }
+  useEffect(() => {
+    getImageAvatar()
+  }, [])
+  const getImageAvatar = () => {
+    const response = ref(storage, `avatar/${userData.id}`)
+    getDownloadURL(response)
+      .then((url) => {
+        setPickedUri(url)
+        console.log("url", response)
+      })
+      .catch((error) => {
+        console.log(error)
+        setPickedUri(null)
+      })
+  }
+  const handleUploadImage = async (uri) => {
+    const response = await fetch(uri)
+    const blob = await response.blob()
+    const uploadImage = ref(storage, `avatar/${userData.id}`)
+    try {
+      await uploadBytes(uploadImage, blob)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const handleTakeImage = async () => {
     const isCameraOk = await verifyPermissions()
     if (!isCameraOk) return
@@ -63,9 +89,8 @@ const User = ({ navigation }) => {
       aspect: [4, 3],
       quality: 0.8,
     })
-    const fileName = image.assets[0].uri.split("/").pop()
-    const newPath = FileSystem.documentDirectory + fileName
-    setPickedUri(newPath)
+    setPickedUri(image.assets[0].uri)
+    await handleUploadImage(image.assets[0].uri)
   }
   return (
     <ScrollView>
