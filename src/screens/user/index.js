@@ -1,3 +1,6 @@
+import * as FileSystem from "expo-file-system"
+import * as ImagePicker from "expo-image-picker"
+
 import {
   Alert,
   Image,
@@ -6,17 +9,20 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
-import { clearCart, signOut } from "../../store/actions"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import React from "react"
+import { AntDesign } from "@expo/vector-icons"
+import colors from "../../constants/themes/colors"
 import { styles } from "./styles"
 
-const User = () => {
+const User = ({ navigation }) => {
+  const [pickedUri, setPickedUri] = useState(null)
   const dispatch = useDispatch()
   const userData = useSelector(
     (state) => state.auth.userData[0]?.data || state.auth.userData.data
   )
+  console.log(userData)
   const onConfirm = () => {
     dispatch(clearCart())
     dispatch(signOut())
@@ -34,16 +40,53 @@ const User = () => {
       },
     ])
   }
+  const goToSettings = () => {
+    navigation.navigate("Settings")
+  }
+  const verifyPermissions = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync()
+    if (status !== "granted") {
+      Alert.alert(
+        "Insufficient permissions!",
+        "You need to grant camera permissions to use this app.",
+        [{ text: "Okay" }]
+      )
+      return false
+    }
+    return true
+  }
+  const handleTakeImage = async () => {
+    const isCameraOk = await verifyPermissions()
+    if (!isCameraOk) return
+    const image = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0.8,
+    })
+    const fileName = image.assets[0].uri.split("/").pop()
+    const newPath = FileSystem.documentDirectory + fileName
+    setPickedUri(newPath)
+  }
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.profile}>
           <View style={styles.imageContainer}>
-            <Image
-              source={require("../../../assets/img//user/user.png")}
-              resizeMode="center"
-              style={styles.image}
-            />
+            {!pickedUri ? (
+              <Image
+                source={require("../../../assets/img/user/user.png")}
+                resizeMode="center"
+                style={styles.image}
+              />
+            ) : (
+              <Image source={{ uri: pickedUri }} style={styles.image} />
+            )}
+            <TouchableOpacity
+              style={styles.editImage}
+              onPress={handleTakeImage}
+            >
+              <AntDesign name="edit" size={12} color={colors.white} />
+            </TouchableOpacity>
           </View>
           <View style={styles.userData}>
             <Text style={styles.name}>
@@ -53,8 +96,8 @@ const User = () => {
           </View>
         </View>
         <View style={styles.options}>
-          <TouchableOpacity style={styles.option} onPress={() => {}}>
-            <Text style={styles.optionText}>Orders</Text>
+          <TouchableOpacity style={styles.option} onPress={goToSettings}>
+            <Text style={styles.optionText}>Settings</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.option} onPress={logOut}>
             <Text style={{ ...styles.optionText, ...styles.optionTextLogOut }}>

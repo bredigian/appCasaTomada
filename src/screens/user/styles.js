@@ -31,11 +31,26 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 100,
     padding: 5,
+    flexDirection: "column",
+    alignItems: "flex-end",
   },
   image: {
     width: "100%",
     height: "100%",
     borderRadius: 100,
+  },
+  editImage: {
+    backgroundColor: colors.primary,
+    width: 20,
+    height: 20,
+    borderRadius: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    transform: [
+      {
+        translateY: -12,
+      },
+    ],
   },
   userData: {
     flexDirection: "column",

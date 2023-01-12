@@ -8,3 +8,4 @@ export { default as QuantityIncrementator } from "./quantity-incrementator/index
 export { default as LocationSelector } from "./location-selector/index"
 export { default as MapPreview } from "./map-preview/index"
 export { default as Loading } from "./loading/index"
+export { default as SettingsItem } from "./settings-item/index"

@@ -1,4 +1,5 @@
-import { User } from "../screens"
+import { Settings, User } from "../screens"
+
 import colors from "../constants/themes/colors"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
@@ -21,6 +22,23 @@ const UserNavigator = () => {
             backgroundColor: colors.primary,
           },
           statusBarColor: colors.primary,
+        }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          title: "Settings",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontFamily: "UrbanistBold",
+            color: colors.white,
+          },
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          statusBarColor: colors.primary,
+          headerTintColor: colors.white,
         }}
       />
     </Stack.Navigator>
