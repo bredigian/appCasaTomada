@@ -14,6 +14,7 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage"
 import { useDispatch, useSelector } from "react-redux"
 
 import { AntDesign } from "@expo/vector-icons"
+import { async } from "@firebase/util"
 import colors from "../../constants/themes/colors"
 import { styles } from "./styles"
 
@@ -22,7 +23,7 @@ const User = ({ navigation }) => {
   const [pickedUri, setPickedUri] = useState(null)
   const dispatch = useDispatch()
   const userData = useSelector(
-    (state) => state.auth.userData[0]?.data || state.auth.userData?.data
+    (state) => state.auth?.userData[0] || state.auth?.userData
   )
   const onConfirm = () => {
     dispatch(clearCart())
@@ -58,13 +59,12 @@ const User = ({ navigation }) => {
   }
   useEffect(() => {
     getImageAvatar()
-  }, [])
-  const getImageAvatar = () => {
+  }, [userData])
+  const getImageAvatar = async () => {
     const response = ref(storage, `avatar/${userData.id}`)
-    getDownloadURL(response)
+    await getDownloadURL(response)
       .then((url) => {
         setPickedUri(url)
-        console.log("url", response)
       })
       .catch((error) => {
         console.log(error)
@@ -115,9 +115,9 @@ const User = ({ navigation }) => {
           </View>
           <View style={styles.userData}>
             <Text style={styles.name}>
-              {userData.firstName} {userData.lastName}
+              {userData.data.firstName} {userData.data.lastName}
             </Text>
-            <Text style={styles.email}>{userData.email}</Text>
+            <Text style={styles.email}>{userData.data.email}</Text>
           </View>
         </View>
         <View style={styles.options}>

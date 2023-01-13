@@ -92,17 +92,21 @@ export const signIn = (email, password) => {
         throw new Error("User not found")
       }
       const responseUserData = await getUser.json()
-      const userData = Object.keys(responseUserData).map((key) => {
-        return {
-          id: key,
-          data: responseUserData[key].data,
+      let userData = []
+      Object.keys(responseUserData).forEach((key) => {
+        if (responseUserData[key].data.email === data.email) {
+          userData = {
+            id: key,
+            data: responseUserData[key].data,
+          }
+          return userData
         }
       })
       dispatch({
         type: SIGN_IN,
         token: data.idToken,
         userId: data.localId,
-        userData: userData,
+        userData: userData ? userData : [],
       })
     } catch (error) {
       console.log(error)
