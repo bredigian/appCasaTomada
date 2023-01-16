@@ -1,12 +1,10 @@
 import { StyleSheet } from "react-native"
 import colors from "../../constants/themes/colors"
+
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     margin: 20,
-    paddingVertical: 20,
+    padding: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -23,7 +21,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "80%",
+    width: "100%",
   },
   imageContainer: {
     width: 80,
@@ -70,6 +68,10 @@ export const styles = StyleSheet.create({
     marginTop: 60,
   },
   option: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginVertical: 10,
   },
   optionText: {

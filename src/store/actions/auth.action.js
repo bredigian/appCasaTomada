@@ -7,7 +7,7 @@ import {
 import { Alert } from "react-native"
 import { authTypes } from "../types"
 
-const { SIGN_IN, SIGN_UP } = authTypes
+const { SIGN_IN, SIGN_UP, SIGN_OUT } = authTypes
 
 export const signUp = (email, password, firstName, lastName) => {
   return async (dispatch) => {
@@ -39,6 +39,7 @@ export const signUp = (email, password, firstName, lastName) => {
             email: data.email,
             firstName: firstName,
             lastName: lastName,
+            address: "",
           },
         }),
       })
@@ -49,6 +50,7 @@ export const signUp = (email, password, firstName, lastName) => {
           email: data.email,
           firstName: firstName,
           lastName: lastName,
+          address: "",
         },
       }
       dispatch({
@@ -116,7 +118,7 @@ export const signIn = (email, password) => {
 export const signOut = () => {
   return async (dispatch) => {
     dispatch({
-      type: "SIGN_OUT",
+      type: SIGN_OUT,
       token: null,
       userId: null,
       userData: null,

@@ -1,4 +1,4 @@
-import { Settings, User } from "../screens"
+import { Address, User } from "../screens"
 
 import colors from "../constants/themes/colors"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
@@ -25,10 +25,10 @@ const UserNavigator = () => {
         }}
       />
       <Stack.Screen
-        name="Settings"
-        component={Settings}
+        name="Address"
+        component={Address}
         options={{
-          title: "Settings",
+          title: "Address",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontFamily: "UrbanistBold",

@@ -8,13 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
+import { AntDesign, Ionicons } from "@expo/vector-icons"
 import React, { useEffect, useState } from "react"
 import { clearCart, signOut } from "../../store/actions/index"
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage"
 import { useDispatch, useSelector } from "react-redux"
 
-import { AntDesign } from "@expo/vector-icons"
-import { async } from "@firebase/util"
 import colors from "../../constants/themes/colors"
 import { styles } from "./styles"
 
@@ -43,7 +42,7 @@ const User = ({ navigation }) => {
     ])
   }
   const goToSettings = () => {
-    navigation.navigate("Settings")
+    navigation.navigate("Address")
   }
   const verifyPermissions = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync()
@@ -122,12 +121,18 @@ const User = ({ navigation }) => {
         </View>
         <View style={styles.options}>
           <TouchableOpacity style={styles.option} onPress={goToSettings}>
-            <Text style={styles.optionText}>Settings</Text>
+            <Text style={styles.optionText}>Address</Text>
+            <Ionicons
+              name="location-sharp"
+              size={24}
+              color={colors.secundary}
+            />
           </TouchableOpacity>
           <TouchableOpacity style={styles.option} onPress={logOut}>
             <Text style={{ ...styles.optionText, ...styles.optionTextLogOut }}>
               Log Out
             </Text>
+            <Ionicons name={"md-exit"} size={24} color={colors.primary} />
           </TouchableOpacity>
         </View>
       </View>
