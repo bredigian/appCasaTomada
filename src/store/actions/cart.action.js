@@ -9,6 +9,7 @@ import {
 import { URL_BASE } from "../../constants/firebase"
 import { URL_GEOCODING } from "../../constants/maps"
 import { cartTypes } from "../types"
+import { useSelector } from "react-redux"
 
 const { ADD_TO_CART, CONFIRM_CART, REMOVE_FROM_CART, GET_CART, CLEAR_CART } =
   cartTypes
@@ -80,18 +81,9 @@ export const removeFromCart = (id) => {
   }
 }
 
-export const confirmCart = (items, total, coords) => {
+export const confirmCart = (items, total, userData) => {
   return async (dispatch) => {
     try {
-      const responseCoords = await fetch(URL_GEOCODING(coords.lat, coords.lng))
-      if (!responseCoords.ok) {
-        throw new Error("Something went wrong with Geocoding")
-      }
-      const dataCoords = await responseCoords.json()
-      if (!dataCoords.results) {
-        throw new Error("Address not found")
-      }
-      const address = dataCoords.results[0].formatted_address
       const response = await fetch(`${URL_BASE}/orders.json`, {
         method: "POST",
         headers: {
@@ -101,7 +93,7 @@ export const confirmCart = (items, total, coords) => {
           date: Date.now(),
           items,
           total,
-          address,
+          orderUser: userData,
         }),
       })
       const result = await response.json()

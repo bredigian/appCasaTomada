@@ -27,13 +27,24 @@ export const styles = StyleSheet.create({
   },
   cartEmpty: {
     height: "100%",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
   },
   textEmpty: {
-    fontFamily: "UrbanistRegular",
+    fontFamily: "UrbanistItalic",
     color: colors.secundary,
-    fontSize: 25,
-    marginVertical: 40,
+    fontSize: 22,
+    marginVertical: 60,
+  },
+  goToShop: {
+    backgroundColor: colors.secundary,
+    padding: 10,
+    borderRadius: 10,
+  },
+  goToShopText: {
+    color: colors.white,
+    fontSize: 24,
+    fontFamily: "UrbanistBold",
   },
 })
