@@ -1,4 +1,5 @@
 import "dotenv/config"
+
 export default {
   expo: {
     name: "appCasatomada",
@@ -9,7 +10,7 @@ export default {
     userInterfaceStyle: "light",
     splash: {
       image: "./assets/splash.png",
-      resizeMode: "contain",
+      resizeMode: "center",
       backgroundColor: "#ffffff",
     },
     updates: {
@@ -24,6 +25,7 @@ export default {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#FFFFFF",
       },
+      package: "com.bredigian.appcasatomada",
     },
     web: {
       favicon: "./assets/favicon.png",
@@ -37,6 +39,9 @@ export default {
       firebaseStorageBucket: process.env.STORAGE_BUCKET_FIREBASE,
       firebaseMessagingSenderId: process.env.MESSAGING_SENDER_ID_FIREBASE,
       firebaseAppId: process.env.APP_ID_FIREBASE,
+      eas: {
+        projectId: "39c2e598-efcd-41a8-916d-78240611d359",
+      },
     },
   },
 }
