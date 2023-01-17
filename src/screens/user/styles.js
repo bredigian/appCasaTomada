@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   },
   profile: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
   },

@@ -6,6 +6,9 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   confirmTotal: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     margin: 20,
     padding: 20,
     backgroundColor: colors.white,
@@ -21,9 +24,15 @@ export const styles = StyleSheet.create({
   totalText: {
     fontFamily: "UrbanistBold",
     color: colors.secundary,
-    fontSize: 18,
-    width: 160,
+    fontSize: 24,
     textAlign: "center",
+  },
+  confirmText: {
+    fontFamily: "UrbanistBold",
+    backgroundColor: "green",
+    padding: 10,
+    borderRadius: 10,
+    color: colors.white,
   },
   cartEmpty: {
     height: "100%",

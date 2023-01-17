@@ -57,8 +57,9 @@ const Cart = ({ navigation }) => {
       )}
       {cart.length > 0 && (
         <View style={styles.confirmTotal}>
+          <Text style={styles.totalText}>${total}</Text>
           <TouchableOpacity style={styles.checkout} onPress={onConfirmCart}>
-            <Text style={styles.totalText}>Confirm order</Text>
+            <Text style={styles.confirmText}>CONFIRM</Text>
           </TouchableOpacity>
         </View>
       )}

@@ -1,5 +1,4 @@
-import { AdressLocation, Cart } from "../screens"
-
+import { Cart } from "../screens"
 import React from "react"
 import colors from "../constants/themes/colors"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
@@ -24,13 +23,6 @@ const CartNavigator = () => {
       }}
     >
       <Stack.Screen name="Cart" component={Cart} />
-      <Stack.Screen
-        name="LocationSelector"
-        component={AdressLocation}
-        options={{
-          headerTitle: "Select Location",
-        }}
-      />
     </Stack.Navigator>
   )
 }
