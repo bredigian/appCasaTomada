@@ -5,18 +5,16 @@ export default {
     name: "appCasatomada",
     slug: "appCasatomada",
     version: "1.0.0",
-    sdkVersion: "47.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
     splash: {
       image: "./assets/splash.png",
-      resizeMode: "contain",
+      resizeMode: "center",
       backgroundColor: "#ffffff",
     },
     updates: {
       fallbackToCacheTimeout: 0,
-      url: "https://u.expo.dev/39c2e598-efcd-41a8-916d-78240611d359",
     },
     assetBundlePatterns: ["**/*"],
     ios: {
@@ -28,9 +26,6 @@ export default {
         backgroundColor: "#FFFFFF",
       },
       package: "com.bredigian.appcasatomada",
-    },
-    runtimeVersion: {
-      policy: "appVersion",
     },
     web: {
       favicon: "./assets/favicon.png",
